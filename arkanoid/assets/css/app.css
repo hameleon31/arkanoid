@@ -1,0 +1,23 @@
+﻿body {
+    font-family: 'Segoe UI', sans-serif;
+}
+canvas{
+    border-top: 2px solid brown;
+    border-left: 2px solid brown;
+    border-right: 2px solid brown;
+	width: 500px;
+	height: 500px;
+}
+#speed, #score, #restart, #info{
+    float: left;
+    margin-left: 30px;
+    margin-right: 30px;
+    color:red;
+    cursor: pointer;
+    width: 150px;
+}
+body{
+    float: left;
+    display: inline-block;
+    background-color: blanchedalmond;
+}
