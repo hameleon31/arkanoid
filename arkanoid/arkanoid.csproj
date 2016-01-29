@@ -24,6 +24,10 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="Ball.ts" />
+    <TypeScriptCompile Include="CanvasManager.ts" />
+    <TypeScriptCompile Include="GameManager.ts" />
+    <TypeScriptCompile Include="Platform.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
