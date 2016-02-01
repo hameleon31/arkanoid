@@ -25,6 +25,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="Ball.ts" />
+    <TypeScriptCompile Include="Block.ts" />
     <TypeScriptCompile Include="CanvasManager.ts" />
     <TypeScriptCompile Include="GameManager.ts" />
     <TypeScriptCompile Include="Platform.ts" />

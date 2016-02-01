@@ -7,15 +7,16 @@
         public radius: number;
         public color: string;
         public colors: string[];
+        public acceleration: number = 0.02;
 
-        constructor(x: number, y: number, speed: number = 2, color: string = 'blue') {
+        constructor(x: number, y: number, speed: number = 2, color: string = 'green') {
             this.x = x;
             this.y = y;
             this.vx = speed;
             this.vy = speed;
             this.radius = 15;
             this.color = color;
-            this.colors = ["blue", "yellow", "black", "green", "maroon"];
+            this.colors = ["#5e9c19", "#7eaf46", "#2f4e0c", "#aecd8c"];
         }
 
         public changeColor(): void{
@@ -33,7 +34,7 @@
 
         public touchFloor(h: number, platform: Platform): boolean {
             var flag: boolean = (this.y + this.radius + this.vy) >= (h - platform.height - 10) &&
-                (this.y + this.radius + this.vy) < h;
+                (this.y + this.radius + this.vy) <= h;
             return flag;
         }
 
@@ -53,8 +54,8 @@
         public jumpY(): void { this.vy *= -1; }
 
         public accelerate() {
-            ball.vx *= 1.1;
-            ball.vy *= 1.1;
+            ball.vx += ball.vx * this.acceleration;
+            ball.vy += ball.vy * this.acceleration;
         }
     }
 }

@@ -3,6 +3,7 @@
 /// <reference path="CanvasManager.ts" />
 /// <reference path="Ball.ts" />
 /// <reference path="Platform.ts" />
+/// <reference path="Block.ts" />
 var game = new Core.GameManager();
 var ball;
 var platform;
@@ -61,6 +62,8 @@ function initWindow() {
     platform = new Core.Platform(w / 2, h - 20);
     canvasManager.drawBall(ball);
     canvasManager.drawPlatform(platform);
+    canvasManager.drawBlock(new Core.Block(50, 0, 100, 30), true);
+    canvasManager.drawBlock(new Core.Block(300, 0, 350, 30), true);
 }
 // main function: call it every 10ms by setInterval()
 function play() {
@@ -69,23 +72,27 @@ function play() {
         var h = canvasManager.height();
         canvasManager.clear();
         ball.move();
-        if (ball.touchWall(w)) {
-            ball.jumpX();
+        if (canvasManager.touchBlock(ball)) {
         }
-        if (ball.touchCeil()) {
-            ball.jumpY();
-        }
-        else if (ball.touchFloor(h, platform)) {
-            if (ball.touchPlatform(h, platform)) {
-                ball.jumpY();
-                game.score += 1;
-                ball.accelerate();
-                game.scoreText.html(String(game.score));
-                game.speedText.html(String(Math.abs(ball.vx).toFixed(2)));
-                ball.changeColor();
+        else {
+            if (ball.touchWall(w)) {
+                ball.jumpX();
             }
-            else {
-                game.gameOver();
+            if (ball.touchCeil()) {
+                ball.jumpY();
+            }
+            else if (ball.touchFloor(h, platform)) {
+                if (ball.touchPlatform(h, platform)) {
+                    ball.jumpY();
+                    game.score += 1;
+                    ball.accelerate();
+                    game.scoreText.html(String(game.score));
+                    game.speedText.html(String(Math.abs(ball.vx).toFixed(2)));
+                    ball.changeColor();
+                }
+                else {
+                    game.gameOver();
+                }
             }
         }
         // platform moving
@@ -97,6 +104,7 @@ function play() {
         }
         canvasManager.drawBall(ball);
         canvasManager.drawPlatform(platform);
+        canvasManager.drawBlocks();
     }
     else {
         clearInterval(game.id);
