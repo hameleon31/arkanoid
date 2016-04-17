@@ -7,6 +7,7 @@
         public score: number;
         public id: number;
         public delay: boolean;
+        public canvas: Core.CanvasManager;
 
         public scoreText: JQuery;
         public speedText: JQuery;
@@ -30,6 +31,10 @@
         public loadDOM(): void {
             this.scoreText = jQuery('#score > h2 > span');
             this.speedText = jQuery('#speed > h2 > span');
+        }
+
+        public stop() {
+            clearInterval(this.id);
         }
 
 

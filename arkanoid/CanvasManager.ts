@@ -2,7 +2,7 @@
     export class CanvasManager {
         private canvas;
         private context;
-        public blocks: Block[] = [];
+        private blocks: Block[] = [];
 
         constructor(canvasId: string) {
             this.canvas = document.getElementById(canvasId);
@@ -27,6 +27,10 @@
 
         public clear(): void {
             this.context.clearRect(0, 0, this.width(), this.height());
+        }
+
+        public countBlocks(): number {
+            return this.blocks.length;
         }
 
         public drawBall(ball: Ball): void {

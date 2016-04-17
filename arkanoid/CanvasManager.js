@@ -21,6 +21,9 @@ var Core;
         CanvasManager.prototype.clear = function () {
             this.context.clearRect(0, 0, this.width(), this.height());
         };
+        CanvasManager.prototype.countBlocks = function () {
+            return this.blocks.length;
+        };
         CanvasManager.prototype.drawBall = function (ball) {
             this.context.beginPath();
             this.context.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, false);

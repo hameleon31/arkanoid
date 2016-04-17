@@ -19,6 +19,9 @@ var Core;
             this.scoreText = jQuery('#score > h2 > span');
             this.speedText = jQuery('#speed > h2 > span');
         };
+        GameManager.prototype.stop = function () {
+            clearInterval(this.id);
+        };
         return GameManager;
     })();
     Core.GameManager = GameManager;

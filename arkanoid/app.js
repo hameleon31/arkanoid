@@ -68,6 +68,10 @@ function initWindow() {
 // main function: call it every 10ms by setInterval()
 function play() {
     if (!game.over) {
+        if (canvasManager.countBlocks() < 1) {
+            alert('Congratulations! You have reached to the next level');
+            game.stop();
+        }
         var w = canvasManager.width();
         var h = canvasManager.height();
         canvasManager.clear();
@@ -107,7 +111,7 @@ function play() {
         canvasManager.drawBlocks();
     }
     else {
-        clearInterval(game.id);
+        game.stop();
         alert("Game Over");
     }
 }
